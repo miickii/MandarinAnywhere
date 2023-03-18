@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="">
-      <div className='relative flex flex-col justify-end h-screen bg-gray-800'>
+      <div className='relative flex flex-col justify-end h-screen bg-gray-800 pb-[65px]'>
         {loading && (
             <div role="status" className='flex-auto justify-center items-center'>
                 <svg aria-hidden="true" className="w-12 h-12 text-gray-200 animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
