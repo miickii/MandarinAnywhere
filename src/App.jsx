@@ -33,7 +33,7 @@ function App() {
 
 
   return (
-    <div className='relative flex flex-col justify-end h-screen bg-gray-800'>
+    <div className='relative flex flex-col justify-end h-[100svh] bg-gray-800'>
       {loading && (
           <div role="status" className='flex-auto justify-center items-center'>
               <svg aria-hidden="true" className="w-12 h-12 text-gray-200 animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@ function App() {
               </svg>
           </div>
       )}
-      {!loading && <div className='bg-gray-800 px-5 py-5'>
+      {!loading && <div className='flex-auto bg-gray-800 px-5 py-5 overflow-y-auto'>
           <div className='w-full flex flex-col gap-3'>
             {words.map((word, i) => (
                 <div key={i} className="relative h-20 bg-neutral-500 flex flex-col items-center justify-center border-2 border-gray-400 rounded-lg cursor-pointer p-5" onClick={() => console.log("hej")}>
@@ -53,7 +53,7 @@ function App() {
           </div>
         </div>
       }
-      <div className='h-[70px] bg-gray-800 py-3 px-3'>
+      <div className='h-[70px] flex-none bg-gray-800 py-3 px-3'>
         <div className='relative h-full bg-gray-600 rounded-md py-2 px-2 border-2 border-gray-500'>
           <IoMdSend className="absolute right-3 top-1/2 -translate-y-1/2 text-interactives cursor-pointer focus:" size={20} onClick={search} />
           <input type="text" ref={inputElement} placeholder="Search" className='h-full w-full text-white bg-transparent focus:outline-none' onChange={e => setText(e.target.value)}></input>
