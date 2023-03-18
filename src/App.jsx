@@ -33,7 +33,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="height-available">
       <div className='relative flex flex-col justify-end h-screen bg-gray-800'>
         {loading && (
             <div role="status" className='flex-auto justify-center items-center'>
