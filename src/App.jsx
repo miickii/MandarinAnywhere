@@ -43,7 +43,7 @@ function App() {
                 </svg>
             </div>
         )}
-        {!loading && <div className='flex-auto bg-gray-800 px-5 py-5 overflow-y-auto'>
+        {!loading && <div className='bg-gray-800 px-5 py-5 overflow-y-auto'>
             <div className='w-full flex flex-col gap-3'>
               {words.map((word, i) => (
                   <div key={i} className="relative h-20 bg-neutral-500 flex flex-col items-center justify-center border-2 border-gray-400 rounded-lg cursor-pointer p-5" onClick={() => console.log("hej")}>
