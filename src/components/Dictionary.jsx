@@ -8,6 +8,7 @@ const Dictionary = ({ changeTool }) => {
     const [wordMeanings, setWordMeanings] = useState([]);
     const [text, setText] = useState("");
     const [loading, setLoading] = useState(false);
+    const [isChat, setIsChat] = useState(false);
     const inputElement = useRef();
   
     const search = async () => {
@@ -45,9 +46,9 @@ const Dictionary = ({ changeTool }) => {
   
   
     return <>
-        <div className='h-14 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
-            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-md'>Dictionary</div>
-            <div className='border-2 border-gray-400 bg-gray-500 px-2 py-1 text-white rounded-md cursor-pointer' onClick={() => changeTool(1)}>Chat</div>
+        <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
+            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-xl'>Dictionary</div>
+            <div className='border-2 border-gray-400 bg-gray-500 px-2 py-1 text-white rounded-xl cursor-pointer' onClick={() => changeTool(1)}>Chat</div>
         </div>
         {!selectedWord && <>
           {loading && (

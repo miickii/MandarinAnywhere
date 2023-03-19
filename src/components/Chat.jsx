@@ -54,9 +54,9 @@ const Chat = ({ changeTool }) => {
     }, []);
   
     return <>
-        <div className='h-14 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
-            <div className='border-2 border-gray-500 bg-gray-400 px-2 py-1 text-white rounded-md cursor-pointer' onClick={() => changeTool(0)}>Dictionary</div>
-            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-md'>Chat</div>
+        <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
+            <div className='border-2 border-gray-400 bg-gray-500 px-2 py-1 text-white rounded-xl cursor-pointer' onClick={() => changeTool(0)}>Dictionary</div>
+            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-xl'>Chat</div>
         </div>
         <div className='h-full bg-gray-800 px-5 py-5 overflow-y-auto scrollbar'>
             <div className='h-full w-full flex flex-col gap-12'>
