@@ -7,6 +7,7 @@ module.exports = {
         "background": "#13005A",
         "cards": "#1C82AD",
         "menus": "#00337C",
+        "bright-green": "#50C878",
         "interactives": "#03C988",
       }
     },

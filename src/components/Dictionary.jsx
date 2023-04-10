@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { IoMdSend } from 'react-icons/io';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
-const Dictionary = ({ changeTool }) => {
+const Dictionary = () => {
     const [words, setWords] = useState([]);
     const [selectedWord, setSelectedWord] = useState(null);
     const [wordMeanings, setWordMeanings] = useState([]);
@@ -36,6 +36,7 @@ const Dictionary = ({ changeTool }) => {
     }, [words])
   
     useEffect(() => {
+      console.log
       if (selectedWord === null) {
         setWordMeanings([]);
       } else {
@@ -44,12 +45,7 @@ const Dictionary = ({ changeTool }) => {
       }
     }, [selectedWord])
   
-  
     return <>
-        <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
-            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-xl'>Dictionary</div>
-            <div className='border-2 border-gray-400 bg-gray-500 px-2 py-1 text-white rounded-xl cursor-pointer' onClick={() => changeTool(1)}>Chat</div>
-        </div>
         {!selectedWord && <>
           {loading && (
               <div role="status" className='h-full flex justify-center items-center'>

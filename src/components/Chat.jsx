@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { IoMdSend } from 'react-icons/io';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
-const Chat = ({ changeTool }) => {
+const Chat = () => {
     const [chatHistory, setChatHistory] = useState([]);
     const [text, setText] = useState("");
     const inputElement = useRef();
@@ -54,10 +54,6 @@ const Chat = ({ changeTool }) => {
     }, []);
   
     return <>
-        <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
-            <div className='border-2 border-gray-400 bg-gray-500 px-2 py-1 text-white rounded-xl cursor-pointer' onClick={() => changeTool(0)}>Dictionary</div>
-            <div className='border-2 border-gray-400 bg-interactives px-2 py-1 text-white rounded-xl'>Chat</div>
-        </div>
         <div className='h-full bg-gray-800 px-5 py-5 overflow-y-auto scrollbar'>
             <div className='h-full w-full flex flex-col gap-12'>
                 {chatHistory.map((message, i) => (
