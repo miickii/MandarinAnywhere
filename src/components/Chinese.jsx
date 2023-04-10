@@ -55,7 +55,7 @@ const Chinese = ({ allWords, currWord, onGuess }) => {
             </>}
             <article className={`bg-gray-500 min-w-[16rem] max-w-xs text-white text-center shadow-2xl rounded-2xl p-4 border-gray-400 border-4`}>
                 <h1 className="font-bold text-3xl">{currWord.chinese} <span className={`text-2xl ${!guessedWord && "hidden"}`}>- {currWord.pinyin}</span></h1>
-                {guessedWord && <h1 className="font-bold text-2xl my-2 text-black">{currWord.english}</h1>}
+                {guessedWord && <h1 className="font-bold text-2xl my-2 text-black">{currWord.short_english}</h1>}
             </article>
         </div>
         
