@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
-import Dropdown from "../Components/Dropdown";
+import Dropdown from "./Dropdown";
 import Test from "./Test";
 
 const SelectTest = () => {
