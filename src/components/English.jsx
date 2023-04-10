@@ -94,11 +94,10 @@ const English = ({ allWords, currWord, onGuess }) => {
                 <h1 className={`mb-1 text-white ${!showHint && "opacity-0"}`}>{hint}</h1>
                 <button className="mb-3 text-xl font-semibold underline" onClick={() => setShowHint(!showHint)}>Hint</button>
             </>}
-            <article className={`mb-20 bg-gray-500 min-w-[16rem] max-w-xs text-white text-center shadow-2xl rounded-2xl p-5 border-gray-400 border-4`}>
-                <h1 className="font-bold text-3xl">{currWord.english}</h1>
+            <article className={`mb-20 bg-gray-500 min-w-[16rem] max-w-xs text-white text-center shadow-2xl rounded-2xl p-4 border-gray-400 border-4`}>
+                <h1 className="font-bold text-3xl">{currWord.short_english}</h1>
                 {guessed && <>
-                    <h1 className="font-bold text-4xl mt-4 text-gray-700">{currWord.chinese}</h1>
-                    <h1 className="text-xl my-2 text-black">{currWord.pinyin}</h1>
+                    <h1 className="font-bold text-2xl mt-4 text-gray-700">{currWord.chinese} - {currWord.pinyin}</h1>
                 </>}
             </article>
         </div>
@@ -107,20 +106,20 @@ const English = ({ allWords, currWord, onGuess }) => {
             <div className="pb-2 min-w-[320px] h-10 border-b-4 border-gray-600 flex justify-start">
                 {selected.map((character, i) => (
                     <article key={i} className={`text-white border-2 border-gray-400 font-bold w-fit text-center rounded-2xl h-8 px-4 mx-2 mb-4 flex items-center cursor-pointer ${guessed ? (characterIsCorrect(character, i) ? "bg-bright-green" : "!bg-red-400") : "bg-gray-900"}`} onClick={() => removeCharacter(character, i)}>
-                        <h1 className="text-xl">{character}</h1>
+                        <h1 className="text-lg">{character}</h1>
                     </article>
                 ))}
             </div>
 
-            <div className="w-4/5 mt-10 flex flex-wrap justify-center">
+            <div className="w-4/5 my-10 flex flex-wrap justify-center">
                 {choices.map((character, i) => (
                     <article key={i} className="text-white border-2 border-gray-400 bg-gray-900 font-bold w-fit text-center rounded-2xl h-8 px-4 mx-2 mb-4 flex items-center cursor-pointer" onClick={() => selectCharacter(character, i)}>
-                        <h1 className="text-xl">{character}</h1>
+                        <h1 className="text-lg">{character}</h1>
                     </article>
                 ))}
             </div>
 
-            <button className="w-10/12 mt-10 text-center text-md font-bold py-2 px-3 rounded-xl bg-bright-green focus:outline-none" onClick={guess}>
+            <button className="w-10/12 mb-5 text-center text-md font-bold py-2 px-3 rounded-xl bg-bright-green focus:outline-none" onClick={guess}>
                 CHECK
             </button>
         </div>

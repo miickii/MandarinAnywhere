@@ -53,20 +53,17 @@ const Chinese = ({ allWords, currWord, onGuess }) => {
                 <h1 className={`mb-1 text-white ${!showHint && "opacity-0"}`}>{hint}</h1>
                 <button className="mb-3 text-xl font-semibold underline" onClick={() => setShowHint(!showHint)}>Hint</button>
             </>}
-            <article className={`bg-gray-500 min-w-[16rem] max-w-xs text-white text-center shadow-2xl rounded-2xl p-5 border-gray-400 border-4`}>
-                <h1 className="font-bold text-4xl">{currWord.chinese}</h1>
-                {guessedWord && <>
-                    <h1 className="text-xl my-2 text-gray-700">{currWord.pinyin}</h1>
-                    <h1 className="font-bold text-2xl my-2 text-black">{currWord.english}</h1>
-                </>}
+            <article className={`bg-gray-500 min-w-[16rem] max-w-xs text-white text-center shadow-2xl rounded-2xl p-4 border-gray-400 border-4`}>
+                <h1 className="font-bold text-3xl">{currWord.chinese} <span className={`text-2xl ${!guessedWord && "hidden"}`}>- {currWord.pinyin}</span></h1>
+                {guessedWord && <h1 className="font-bold text-2xl my-2 text-black">{currWord.english}</h1>}
             </article>
         </div>
         
         <div className="h-1/2 flex items-end justify-center">
-            <div className="w-5/6 flex flex-wrap justify-center">
+            <div className="w-5/6 flex flex-wrap justify-center gap-2 mb-2">
                 {choices.map((choice, i) => (
-                    <article key={i} className={`text-white border-2 border-gray-400 font-bold w-fit text-center rounded-2xl h-10 px-4 mx-2 mb-4 flex items-center cursor-pointer duration-300 hover:scale-110 ${guessedWord ? (choice === guessedWord && (guessedWord === currWord ? "bg-bright-green" : "bg-red-400")) : "bg-gray-900"}`} onClick={() => guess(choice)}>
-                        <h1 className="text-xl">{choice.short_english}</h1>
+                    <article key={i} className={`text-white border-2 border-gray-400 font-bold w-fit text-center rounded-2xl px-4 py-1 mb-1 flex items-center cursor-pointer duration-300 hover:scale-110 ${guessedWord ? (choice === guessedWord && (guessedWord === currWord ? "bg-bright-green" : "bg-red-400")) : "bg-gray-900"}`} onClick={() => guess(choice)}>
+                        <h1 className="text-sm">{choice.short_english}</h1>
                     </article>
                 ))}
             </div>
