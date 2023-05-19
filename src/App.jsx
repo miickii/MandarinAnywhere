@@ -5,6 +5,7 @@ import SelectTest from './components/SelectTest';
 
 function App() {
   const [tool, setTool] = useState(0);
+  const [showMenu, setShowMenu] = useState(true);
 
   const changeTool = (newTool) => {
     setTool(newTool);
@@ -12,12 +13,13 @@ function App() {
 
   return (
     <div className='relative flex flex-col justify-end h-[100svh] bg-gray-800'>
-      <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
-          <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===0 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(0)}>Dictionary</div>
-          <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===1 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(1)}>Chat</div>
-          <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===2 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(2)}>Test</div>
-      </div>
-      {tool === 0 && <Dictionary />}
+      {showMenu && <div className='py-2 border-b-2 border-gray-500 bg-gray-700 flex items-center justify-center gap-6'>
+            <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===0 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(0)}>Dictionary</div>
+            <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===1 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(1)}>Chat</div>
+            <div className={`border-2 border-gray-400 px-2 py-1 text-white rounded-xl cursor-pointer ${tool===2 ? "bg-interactives" : "bg-gray-500"}`} onClick={() => changeTool(2)}>Test</div>
+        </div>
+      }
+      {tool === 0 && <Dictionary showMenu={(show) => setShowMenu(show)} />}
       {/* <Dictionary /> */}
       {tool === 1 && <Chat />}
       {tool === 2 && <SelectTest />}

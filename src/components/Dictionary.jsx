@@ -1,8 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 import { IoMdSend } from 'react-icons/io';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { IoIosAdd } from 'react-icons/io';
+import WordForm from './WordForm';
 
-const Dictionary = () => {
+const Dictionary = ({ showMenu }) => {
     const [words, setWords] = useState([]);
     const [selectedWord, setSelectedWord] = useState(null);
     const [wordMeanings, setWordMeanings] = useState([]);
@@ -10,6 +12,7 @@ const Dictionary = () => {
     const [loading, setLoading] = useState(false);
     const [isChat, setIsChat] = useState(false);
     const inputElement = useRef();
+    const [showAddModal, setShowAddModal] = useState(false);
   
     const search = async () => {
       if (text.trim().length === 0) return;
@@ -39,9 +42,11 @@ const Dictionary = () => {
       console.log
       if (selectedWord === null) {
         setWordMeanings([]);
+        showMenu(true);
       } else {
         const meanings = selectedWord.english.split(";").map(word => word.trim());
         setWordMeanings(meanings);
+        showMenu(false);
       }
     }, [selectedWord])
   
@@ -73,10 +78,15 @@ const Dictionary = () => {
             </div>
           </div>
         </>}
-        {selectedWord && <div className='h-full'>
-          <div className='h-12 border-b-2 border-gray-500 bg-gray-700 flex items-center' onClick={() => setSelectedWord(null)}>
-            <AiOutlineArrowLeft className='text-interactives mx-2' size={24}/>
-            <h1 className='text-interactives text-xl'>{text}</h1>
+        {selectedWord && !showAddModal && <div className='h-full'>
+          <div className='h-12 border-b-2 border-gray-500 bg-gray-700 flex justify-between'>
+            <div className='flex items-center' onClick={() => setSelectedWord(null)}>
+              <AiOutlineArrowLeft className='text-interactives mx-2' size={24}/>
+              <h1 className='text-interactives text-xl'>{text}</h1>
+            </div>
+            <div className='flex items-center' onClick={() => setShowAddModal(true)}>
+              <IoIosAdd className='text-interactives mx-2' size={28} />
+            </div>
           </div>
           <div className='border-b-2 border-gray-500 mt-4 flex flex-col items-center'>
             <h1 className='text-blue-300 font-bold text-5xl'>{selectedWord.chinese}</h1>
@@ -99,6 +109,11 @@ const Dictionary = () => {
               ))}
           </div>
         </div>}
+        {showAddModal && (
+            <div className="w-full h-full">
+                <WordForm word={selectedWord} onClose={() => setShowAddModal(false)} add />
+            </div>
+        )}
     </>
 }
 
