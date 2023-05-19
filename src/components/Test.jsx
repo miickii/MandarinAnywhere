@@ -150,10 +150,10 @@ const Test = ({ levels, amount, categories, onNewTest}) => {
 
                 {/* Example sentence containing word that shows up after guess */}
                 {guessed && <div className={`${!displayChinese && "absolute bottom-0"} flex flex-col items-center w-full bg-gray-700 shadow-2xl rounded-t-xl`}>
-                    {currWord.examples.length > 0 && <div className="mt-4 text-center text-white w-10/12">
+                    {currWord.sentence_chinese.length > 0 && <div className="mt-4 text-center text-white w-10/12">
                         <h1>Example sentence:</h1>
-                        <h1>{currWord.examples[0].chinese}</h1>
-                        <h1>{currWord.examples[0].english}</h1>
+                        <h1>{currWord.sentence_chinese}</h1>
+                        <h1>{currWord.sentence_english}</h1>
                     </div>}
         
                     {/* Next button that shows up after a guess has been made */}
