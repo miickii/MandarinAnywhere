@@ -13,6 +13,7 @@ const Test = ({ levels, amount, categories, onNewTest}) => {
 
     const [wrongAnswers, setWrongAnswers] = useState([]);
     const [correctAnswers, setCorrectAnswers] = useState([]);
+    const [wordCorrect, setWordCorrect] = useState(false); // default every round is not correct, will only be true after a correct guess
     const [guessed, setGuessed] = useState(false);
 
     const [srsUpdated, setSrsUpdated] = useState(false);
@@ -76,6 +77,9 @@ const Test = ({ levels, amount, categories, onNewTest}) => {
     }
 
     const next = () => {
+        setWordCorrect(false);
+        console.log(correctAnswers);
+        console.log(wrongAnswers);
         if (currIndex + 1 < words.length) {
             updateWord();
         } else {
@@ -90,12 +94,20 @@ const Test = ({ levels, amount, categories, onNewTest}) => {
         setCurrIndex(currIndex + 1);
     };
 
+    const changeToFailed = () => {
+        // Remove the word from correctAnswers and add it to wrongAnswers
+        setCorrectAnswers(correctAnswers.slice(0, -1))
+        setWrongAnswers([...wrongAnswers, currWord]);
+        setWordCorrect(false); // Reset this variable to remove button to "fail word"
+    }
+
     const guess = (correct) => {
         setGuessed(true);
         if (!correct) {
             setWrongAnswers([...wrongAnswers, currWord]);
         } else {
             setCorrectAnswers([...correctAnswers, currWord]);
+            setWordCorrect(true); // Save such that it can be undone
         }
     };
 
@@ -155,12 +167,18 @@ const Test = ({ levels, amount, categories, onNewTest}) => {
                         <h1>{currWord.sentence_chinese}</h1>
                         <h1>{currWord.sentence_english}</h1>
                     </div>}
-        
-                    {/* Next button that shows up after a guess has been made */}
-                    <button className={`my-4 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-bright-green transition duration-150 ease-in-out hover:bg-dark-green bg-bright-green rounded text-white px-8 py-2 text-xl`}
-                    onClick={next}>
-                        {currIndex < words.length-1 ? "Next" : "Results"}
-                    </button>
+                    
+                    <div className="flex justify-center items-center my-4">
+                        {/* Next button that shows up after a guess has been made */}
+                        <button className={`focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-bright-green transition duration-150 ease-in-out hover:bg-dark-green bg-bright-green rounded text-white px-8 py-2 mr-2 text-xl`}
+                        onClick={next}>
+                            {currIndex < words.length-1 ? "Next" : "Results"}
+                        </button>
+                        {wordCorrect && <button className={`h-2/3 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-400 transition duration-150 ease-in-out hover:bg-dark-green bg-red-400 rounded text-white px-2 py-0 text-sm`} onClick={changeToFailed}>
+                                Fail
+                            </button>
+                        }
+                    </div>
                 </div>}
             </div>}
 
