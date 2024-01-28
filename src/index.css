@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-800;
+  }
+}
+
+@layer components {
+  .single-thumb .range-slider__thumb[data-lower] {
+      width: 0;
+  }
+  .single-thumb .range-slider__range {
+      border-radius: 6px;
+  }
+}
